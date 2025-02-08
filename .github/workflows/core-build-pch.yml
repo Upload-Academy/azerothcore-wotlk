@@ -1,5 +1,6 @@
 name: pch-build
 on:
+  workflow_dispatch:
   push:
     branches:
       - 'master'
@@ -29,7 +30,7 @@ jobs:
               CXX: clang++-18
     runs-on: ${{ matrix.os }}
     name: ${{ matrix.os }}-${{ matrix.compiler.CC }}-pch
-    if: github.repository == 'azerothcore/azerothcore-wotlk' && !github.event.pull_request.draft
+    if: github.repository == 'Upload-Academy/azerothcore-wotlk' && !github.event.pull_request.draft
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/linux-build
